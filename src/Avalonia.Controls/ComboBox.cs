@@ -261,14 +261,11 @@ namespace Avalonia.Controls
         protected override void OnPointerPressed(PointerPressedEventArgs e)
         {
             base.OnPointerPressed(e);
-            if(!e.Handled && e.Source is Visual source)
+            if(e.Handled)
             {
-                if (_popup?.IsInsidePopup(source) == true)
-                {
-                    e.Handled = true;
-                    return;
-                }
+                return;
             }
+            e.Handled = true;
             PseudoClasses.Set(pcPressed, true);
         }
 
